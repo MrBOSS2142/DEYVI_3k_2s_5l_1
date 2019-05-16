@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Задание 1 куки</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="js.cookie.js"></script>
+    <style></style>
+  </head>
+  <body>
+    <div>
+      <button type="button" onclick="get_cookie()">Информация</button><br />
+      <button type="button" onclick="del_cookie()">Удалить</button>
+    </div>
+
+    <script>
+      console.log(document.cookie);
+      window.onload = function() {
+        login = prompt("Логин", "");
+        password = prompt("Пароль", "");
+        var date = new Date();
+        date.setDate(date.getDate() + 3);// срок хранения сегодня + 3 дня
+        date = date.toUTCString();// преобразует дату в строку
+        document.cookie = login + "=" + password;
+      };
+      function get_cookie() {
+        alert(document.cookie);
+      }
+
+      function del_cookie() {
+        document.cookie = login + "=" + password + "; expires= Thu, 01 Jan 1970 00:00:01 GMT;";
+		// delete_cookie(login);
+      }
+    </script>
+  </body>
+</html>
